@@ -1,7 +1,5 @@
 <template>
-	<footer>
-		Contact and things…
-	</footer>
+	<footer>Contact and things…</footer>
 </template>
 
 <style scoped>

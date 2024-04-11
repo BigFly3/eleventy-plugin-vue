@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-npm install --save-dev @mvsde/eleventy-plugin-vue
+npm install --save-dev github:BigFly3/eleventy-plugin-vue
 ```
 
 ## Usage
@@ -12,9 +12,25 @@ In your `eleventy.config.js` or `.eleventy.js`:
 
 ```js
 const { pluginVue } = require('@mvsde/eleventy-plugin-vue')
+const path = require('path')
+const alias = require('@rollup/plugin-alias')
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPlugin(pluginVue)
+	eleventyConfig.addPlugin(pluginVue, {
+		rollupOptions: {
+			plugins: [
+				alias({
+					entries: [
+						{ find: '@', replacement: process.cwd() },
+						{
+							find: '@project',
+							replacement: path.resolve(process.cwd(), 'project')
+						}
+					]
+				})
+			]
+		}
+	})
 }
 ```
 

@@ -5,7 +5,7 @@
 			alt="Snow-covered mountain ridge lit red by the setting sun."
 			width="1200"
 			height="800"
-		>
+		/>
 	</figure>
 </template>
 

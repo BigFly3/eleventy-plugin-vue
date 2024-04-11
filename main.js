@@ -4,16 +4,18 @@ import { render } from './lib/render.js'
 /**
  * @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig
  */
-export function pluginVue (eleventyConfig) {
+export function pluginVue(eleventyConfig, options) {
 	eleventyConfig.addTemplateFormats('vue')
 
 	eleventyConfig.addExtension('vue', {
-		compile (_, inputPath) {
-			return data => render({
-				inputPath,
-				data,
-				methods: this.config.javascriptFunctions
-			})
+		compile(_, inputPath) {
+			return data =>
+				render({
+					inputPath,
+					data,
+					methods: this.config.javascriptFunctions,
+					rollupOptions: options.rollupOptions
+				})
 		},
 		read: false
 	})
